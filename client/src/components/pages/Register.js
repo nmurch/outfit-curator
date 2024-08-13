@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import ".../styles/Register.css";
 
 function Register() {
   const navigate = useNavigate();
@@ -54,9 +53,9 @@ function Register() {
   }
 
   return (
-    <div>
-      <h1>Register</h1>
-      <form onSubmit={submit}>
+    <div className="register-container">
+      <form className="standard-form" onSubmit={submit}>
+        <h1>Register</h1>
         <label htmlFor="fname">First Name</label>
         <input
           type="text"
@@ -93,12 +92,10 @@ function Register() {
           id="password"
         />
         <div className="error">{errors.password}</div>
-        <button type="submit">Register</button>
+        <button className="btn" type="submit">
+          Submit
+        </button>
       </form>
-
-      <p>OR</p>
-
-      <Link to="/login">Login</Link>
     </div>
   );
 }

@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  letter-spacing: 1px;
+}
+
+@font-face {
+  font-family: 'TimeBurner'; 
+  src: url('/public/fonts/timeburner-font/Timeburner-xJB8.ttf');
+}
+
+@font-face {
+  font-family: 'TimeBurnerBold'; 
+  src: url('/public/fonts/timeburner-font/TimeburnerBold-peGR.ttf');
+}
+
+body {
+  background: #fafafa;
+}
+
+a {
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+a:hover {
+  color: #ec099d;
+}
+
+.btn {
+  margin-top: 30px;
+  border-radius: 36px;
+  background: #ec099d;
+  color: white;
+  border: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.7em;
+  display: block;
+  padding: 12px 18px;
+  letter-spacing: 2px;
+  font-family: "Lucida Grande";
+}
+
+.btn:hover {
+  background-color: #fd30b5;
+}
+
+.standard-form h1 {
+  margin-bottom: 40px;
+}
+
+.standard-form {
+  background: white;
+  padding: 60px 50px;
+  display: grid;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  width: 50vw;
+  font-family: "TimeBurnerBold";
+  justify-items: start;
+}
+
+.standard-form input {
+  padding: 10px 12px;
+  width: 90%;
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.standard-form label {
+  margin-top: 10px;
+}

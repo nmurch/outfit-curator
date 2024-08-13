@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+// import "../../styles/Login.css";
 
 function Login() {
   const navigate = useNavigate();
@@ -45,14 +46,13 @@ function Login() {
       } else {
         console.log(err.response.data.errors);
       }
-      
     }
   }
 
   return (
-    <div>
-      <h1>Log in</h1>
-      <form onSubmit={submit}>
+    <div className="login-container">
+      <form className="standard-form" onSubmit={submit}>
+        <h1>Log in</h1>
         <label htmlFor="email">Email Address</label>
         <input
           type="email"
@@ -70,12 +70,8 @@ function Login() {
           id="password"
         />
         <div className="error">{error.password}</div>
-        <button type="submit">Log in</button>
+        <button className="btn" type="submit">Log in</button>
       </form>
-
-      <p>OR</p>
-
-      <Link to="/register">Register</Link>
     </div>
   );
 }
