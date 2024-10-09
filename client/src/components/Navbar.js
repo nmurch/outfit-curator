@@ -1,29 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import LogoutAuth from "./LogoutAuth";
-import axios from "axios";
 import "../styles/Navbar.css";
 
-const Navbar = () => {
-  const [user, setUser] = useState(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    async function fetchUser() {
-      try {
-        const response = await axios.get("http://localhost:5001/", {
-          withCredentials: true, // Ensure cookies are sent with the request
-        });
-        setUser(response.data.user);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    }
-
-    fetchUser();
-  }, [location]);
+const Navbar = ({ user, setUser }) => {
+  const [dropdown, setDropdown] = useState(false);
 
   const { logout } = LogoutAuth();
+
+  const handleLogout = () => {
+    logout();
+    setUser(null);
+  };
+
+  console.log("user", user);
 
   return (
     <div>
@@ -35,26 +25,21 @@ const Navbar = () => {
           {user ? (
             <>
               <li className="nav-item">
-                <Link to="#" className="nav-links">
-                  // page 1
+                <Link to="/upload" className="nav-links">
+                  Upload
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="#" className="nav-links">
-                  // page 2
+                  Curate
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="#" className="nav-links">
-                  // page 3
+                  View your feed
                 </Link>
               </li>
               <li className="nav-item">Welcome, {user.fname}</li>
-              <li className="nav-item">
-                <Link className="btn" onClick={logout} to="/login">
-                  Logout
-                </Link>
-              </li>
             </>
           ) : (
             <>
@@ -68,7 +53,29 @@ const Navbar = () => {
               </li>
             </>
           )}
+          <p
+            className="dropdown-btn"
+            onClick={() => setDropdown((prev) => !prev)}
+          >
+            <i class="fa-solid fa-user"></i>
+          </p>
         </ul>
+        {dropdown && (
+          <div className="dropdown-content">
+            <ul>
+              <li className="drop-item">
+                <Link to="/profile">Profile</Link>
+              </li>
+              {user && (
+                <li className="drop-item">
+                  <Link onClick={handleLogout} to="/login">
+                    Logout
+                  </Link>
+                </li>
+              )}
+            </ul>
+          </div>
+        )}
       </nav>
     </div>
   );

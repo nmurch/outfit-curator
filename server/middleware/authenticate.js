@@ -10,7 +10,7 @@ const requireAuth = (req, res, next) => {
         console.log(err.message);
         res.redirect("/login");
       } else {
-        console.log(decodedToken);
+        // console.log(decodedToken);
         next();
       }
     });
@@ -29,7 +29,7 @@ const checkUser = async (req, res, next) => {
         res.locals.user = null;
         next();
       } else {
-        console.log(decodedToken); // contains user id
+        // console.log(decodedToken); // contains user id
         try {
           const user = await User.findById(decodedToken.id);
           res.locals.user = user;

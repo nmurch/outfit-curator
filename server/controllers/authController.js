@@ -51,10 +51,6 @@ exports.checkAuth = (req, res) => {
   }
 };
 
-// exports.renderHome = (req, res) => {
-//   res.render("Home", { user: req.user });
-// };
-
 // Registering a new user
 exports.register = async (req, res) => {
   const { fname, lname, email, password } = req.body;

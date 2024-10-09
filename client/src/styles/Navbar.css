@@ -6,6 +6,7 @@ nav {
     position: sticky;
     top: 0px;
     margin: 10px 25px;
+    z-index: 999;
 }
 
 nav li a {
@@ -53,4 +54,30 @@ nav li a {
 
 .nav-item .btn:visited {
     color: white;
+}
+
+.dropdown-btn {
+    font-size: 1.7rem;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 3rem;
+    right: -1rem;
+    width: 80px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: white;
+    z-index: 99999999;
+}
+
+.drop-item {
+    list-style-type: none;
+    margin: 1rem 0;
+    color: #000;
+}
+
+.drop-item a:visited {
+    color: black;
 }

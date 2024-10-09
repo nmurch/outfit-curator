@@ -2,9 +2,11 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const multer = require("multer");
 const connectDB = require("./mongo");
 const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/authRoutes");
+const outfitRoutes = require("./routes/outfitRoutes");
 const { requireAuth, checkUser } = require("./middleware/authenticate");
 
 const app = express();
@@ -28,15 +30,16 @@ connectDB();
 // Apply checkUser middleware globally
 app.use(checkUser);
 
-// Use authentication routes
+// Use routes
 app.use(authRoutes);
+app.use(outfitRoutes);
 
 // Routes
 app.get("/", (req, res) => {
   res.json({ user: res.locals.user }); // Send user data to the client
 });
 
-app.get("/filler", requireAuth, (req, res) => res.render("Filler"));
+app.get("/profile", requireAuth, (req, res) => res.render("Profile"));
 
 const port = process.env.PORT || 5001;
 app.listen(port, () => {

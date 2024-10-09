@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import "../styles/Slideshow.css";
 
 function Slideshow() {
@@ -8,27 +9,27 @@ function Slideshow() {
       title: "Your Virtual Closet",
       caption: "All your clothes, at a glance",
       button: "Get Started",
+      path: "/upload",
     },
     {
       url: "/images/filler-img.jpeg",
       title: "Plan and Curate",
-      caption: "Upload stuff BLAH BLAH BLAH BLAH",
+      caption: "Upload stuff",
       button: "Get Started",
     },
     {
       url: "/images/filler-img.jpeg",
       title: "Receive Suggestions",
-      caption: "Using AI BLAH BLAH BLAH BLAH",
+      caption: "Using AI",
       button: "Get Started",
     },
     {
       url: "/images/filler-img.jpeg",
       title: "Get Inspired",
-      caption: "View other's outfits BLAH BLAH BLAH BLAH",
+      caption: "View other's outfits",
       button: "Get Started",
     },
   ];
-  const pages = ["#FFBB28", "#00C49F", "#FFBB28"]; // replace with images
   const [currentIndex, setCurrentIndex] = useState(0);
   const timeoutRef = useRef(null);
   const delay = 5000;
@@ -68,8 +69,8 @@ function Slideshow() {
           >
             <div className="y-centered-inner">
               <h1 className="slide-title">{slide.title}</h1>
-              <span className="slide-caption">{slide.caption}</span>
-              <button className="btn">{slide.button}</button>
+              <p className="slide-caption">{slide.caption}</p>
+              <Link to={slide.path} className="btn">{slide.button}</Link>
             </div>
           </div>
         ))}
